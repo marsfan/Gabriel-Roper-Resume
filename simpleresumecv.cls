@@ -245,7 +245,7 @@
 
 
 % Format Specification for education info
-% format: \UnivInfo{UniveristyName}{univURL}{UniversityLocation}{Degree}{Graduation Date}{HaveGraduatedBool}{GPA}
+% format: \UnivInfo{UniversityName}{univURL}{UniversityLocation}{Degree}{Graduation Date}{HaveGraduatedBool}{GPA}
 \newcommand{\UnivInfo}[6]{
     \Entry
     \href{#2}{\textbf{#1}}
