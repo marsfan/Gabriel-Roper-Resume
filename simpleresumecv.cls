@@ -192,7 +192,7 @@
     \UseSubTitleFont}
 {\par\endgroup\par}
 
-% Enviroment for detailed description of the position
+% Environment for detailed description of the position
 \newenvironment{Description}
 {%
     \SmallGap

@@ -1,9 +1,18 @@
 {
     "cSpell.words": [
         "ARINC",
+        "bfseries",
+        "ddMMMyyyy",
+        "Embry-Riddle",
         "hidelinks",
+        "hyphenat",
+        "ifcase",
+        "ifthen",
+        "ifthenelse",
         "Mahesh",
         "MCDU",
+        "MMMyyyy",
+        "nohead",
         "pdfauthor",
         "pdfcreator",
         "pdfkeywords",
@@ -12,8 +21,16 @@
         "pdfproducer",
         "pdfstartview",
         "pdfsubject",
+        "rmfamily",
+        "scshape",
+        "sffamily",
+        "simpleresumecv",
+        "textbf",
+        "textsc",
         "Tinos",
-        "Embry-Riddle",
+        "ttfamily",
+        "xelatex",
+        "xunicode"
     ],
     "latex-workshop.latex.recipes": [
         {
