@@ -1,6 +1,9 @@
 {
     "cSpell.words": [
+        "ARINC",
         "hidelinks",
+        "Mahesh",
+        "MCDU",
         "pdfauthor",
         "pdfcreator",
         "pdfkeywords",
@@ -8,10 +11,9 @@
         "pdfpagemode",
         "pdfproducer",
         "pdfstartview",
-        "pdfsubject"
-    ],
-    "cSpell.enableFiletypes": [
-        "latex"
+        "pdfsubject",
+        "Tinos",
+        "Embry-Riddle",
     ],
     "latex-workshop.latex.recipes": [
         {
