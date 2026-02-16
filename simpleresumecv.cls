@@ -209,7 +209,7 @@
 % Environment for the table of skills
 \newenvironment{skillTable}
 {
-    \def\arraystretch{1}%  1 is the default, change whatever you need
+    \def\arraystretch{0}%  1 is the default, change whatever you need
     \hspace*{-0.8em}
     \begin{tabular}[t]{p{11em} p{\tableWidth}}
         }
