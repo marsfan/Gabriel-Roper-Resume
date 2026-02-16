@@ -5,11 +5,10 @@ on:
         branches:
             - master # Only run on the master branch
         paths:
-            - '**.tex' # Only run if the resume itself is updated
+            - "**.tex" # Only run if the resume itself is updated
         tags-ignore:
-            - nochange**   # Do not build a new version for any commit tagged with a tag that starts with nochange
+            - nochange** # Do not build a new version for any commit tagged with a tag that starts with nochange
     workflow_dispatch:
-
 
 jobs:
     build:
