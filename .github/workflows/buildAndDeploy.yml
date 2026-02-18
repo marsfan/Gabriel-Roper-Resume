@@ -15,19 +15,18 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - uses: actions/checkout@v6
+            - name: Checkout Repo
+              uses: actions/checkout@v6
 
-            - name: Install Dependencies
-              run: |
-                  sudo apt-get update
-                  sudo apt-get install -y texlive-xetex
+            - name: Build docker container
+              run: make docker
 
             - name: Build Document
-              run: xelatex Gabriel_Roper_Resume.tex
+              run: make build
 
               # For some reason, the bookmarks don't work unless the document is built twice.
             - name: Build Document Again
-              run: xelatex Gabriel_Roper_Resume.tex
+              run: make build
 
             - name: Get Current DateTime
               id: getdate
