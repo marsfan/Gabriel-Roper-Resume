@@ -62,7 +62,7 @@
     left=0.70in,
     right=0.70in,
     top=0.3in,
-    bottom=0in,
+    bottom=0.1in,
     nohead,
     includefoot]{geometry}
 
@@ -198,11 +198,11 @@
     \SmallGap
     \par
     \begin{Detail}
-        \Item
-        \begin{minipage}{\descriptionWidth}
-            }
-            {\par
-        \end{minipage}
+    \Item
+    \begin{minipage}{\descriptionWidth}
+}
+{\par
+    \end{minipage}
     \end{Detail}
 }
 
@@ -212,9 +212,9 @@
     \def\arraystretch{1}%  1 is the default, change whatever you need
     \hspace*{-0.8em}
     \begin{tabular}[t]{p{11em} p{\tableWidth}}
-        }
-        {
-        \vspace{-1em}
+}
+{
+    \vspace{-1em}
     \end{tabular}
 }
 
@@ -223,22 +223,22 @@
 {%
     \par\vspace{1.5\baselineskip}%
     \begin{list}
-        {}
-        {\setlength\leftmargin{1.2in}%
-            \setlength\rightmargin{0in}%
-            \setlength\labelwidth{1.2in}%
-            \setlength\labelsep{0in}%
-            \setlength\listparindent{0in}%
-            \setlength\itemindent{0in}%
-            \setlength\parskip{0in}%
-            \setlength\topsep{0in}%
-            \setlength\parsep{0in}%
-            \setlength\itemsep{.7\baselineskip}%
-            \setlength\partopsep{0in}%
-            \raggedright%
-        }%
-        }
-        {%
+    {}
+    {\setlength\leftmargin{1.2in}%
+        \setlength\rightmargin{0in}%
+        \setlength\labelwidth{1.2in}%
+        \setlength\labelsep{0in}%
+        \setlength\listparindent{0in}%
+        \setlength\itemindent{0in}%
+        \setlength\parskip{0in}%
+        \setlength\topsep{0in}%
+        \setlength\parsep{0in}%
+        \setlength\itemsep{.7\baselineskip}%
+        \setlength\partopsep{0in}%
+        \raggedright%
+    }%
+}
+{%
     \end{list}%
     \par%
 }
