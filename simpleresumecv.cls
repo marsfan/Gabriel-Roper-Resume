@@ -80,33 +80,33 @@
 % Abbreviations for months.
 \newcommand{\LongMonth}[1]{%
     \ifcase#1\relax
-    \or January%
-    \or February%
-    \or March%
-    \or April%
-    \or May%
-    \or June%
-    \or July%
-    \or August%
-    \or September%
-    \or October%
-    \or November%
-    \or December%
+    \or{}January%
+    \or{}February%
+    \or{}March%
+    \or{}April%
+    \or{}May%
+    \or{}June%
+    \or{}July%
+    \or{}August%
+    \or{}September%
+    \or{}October%
+    \or{}November%
+    \or{}December%
     \fi}
 \newcommand{\ShortMonth}[1]{%
     \ifcase#1\relax
-    \or Jan%
-    \or Feb%
-    \or Mar%
-    \or Apr%
-    \or May%
-    \or Jun%
-    \or Jul%
-    \or Aug%
-    \or Sep%
-    \or Oct%
-    \or Nov%
-    \or Dec%
+    \or{}Jan%
+    \or{}Feb%
+    \or{}Mar%
+    \or{}Apr%
+    \or{}May%
+    \or{}Jun%
+    \or{}Jul%
+    \or{}Aug%
+    \or{}Sep%
+    \or{}Oct%
+    \or{}Nov%
+    \or{}Dec%
     \fi}
 
 % XeLaTeX packages.
@@ -119,8 +119,7 @@
 % The "Tinos" fonts are released under the Apache License Version 2.0,
 % and can be downloaded for free at <http://www.fontsquirrel.com/fonts/tinos>.
 % Symbol table: <http://www.fileformat.info/info/unicode/font/tinos/grid.htm>
-\setmainfont
-[Path=./Fonts/Tinos/,
+\setmainfont[Path=./Fonts/Tinos/,
     ItalicFont=Tinos-Italic,
     BoldFont=Tinos-Bold,
     BoldItalicFont=Tinos-BoldItalic]
@@ -170,9 +169,9 @@
 \setlength{\parskip}{0in} % No vertical space between paragraphs.
 
 % Avoid bad page breaks within paragraphs.
-\widowpenalties 1 10000
-\clubpenalties 1 10000
-\raggedbottom
+\widowpenalties=1 10000
+\clubpenalties=1 10000
+\raggedbottom%
 
 % Avoid overfull lines.
 \sloppy
@@ -195,15 +194,15 @@
 % Environment for detailed description of the position
 \newenvironment{Description}
 {%
-    \SmallGap
-    \par
-    \begin{Detail}
-    \Item
-    \begin{minipage}{\descriptionWidth}
+    \SmallGap%
+    \par%
+    \begin{Detail}%
+    \Item%
+    \begin{minipage}{\descriptionWidth}%
 }
-{\par
-    \end{minipage}
-    \end{Detail}
+{\par%
+    \end{minipage}%
+    \end{Detail}%
 }
 
 % Environment for the table of skills
@@ -246,13 +245,15 @@
 
 % Format Specification for education info
 % format: \UnivInfo{UniversityName}{univURL}{UniversityLocation}{Degree}{Graduation Date}{HaveGraduatedBool}{GPA}
-\newcommand{\UnivInfo}[6]{
-    \Entry
-    \href{#2}{\textbf{#1}}
-    \hfill #3\\
-    #4\hfill #5\\
-    % \hfill GPA: #6
-}
+\newcommand{\UnivInfo}[6]{%
+    \Entry%
+    \href{#2}{\textbf{#1}}%
+    \hfill #3%
+
+    #4\hfill #5%
+
+    % \hfill GPA: #6%
+}%
 
 
 % Create Href, but only if the URL field is not blank
@@ -263,43 +264,43 @@
 
 % Format specification for name of positions without date
 % Args: Name, URL, Description. Leave URL blank to not add hyperlink
-\newcommand{\Position}[3]{
-    \Entry\textbf{\OptionalUrl{#2}{#1}}
-    \begin{Description}
-        #3
-    \end{Description}
-    \Gap
-}
+\newcommand{\Position}[3]{%
+    \Entry\textbf{\OptionalUrl{#2}{#1}}%
+    \begin{Description}%
+        #3%
+    \end{Description}%
+    \Gap%
+}%
 
 % Format Specification for name of position and year range
 % Args: Name, URL, Start Year, End Year, description.
 % Leave URL blank to not add hyperlink
 \newcommand{\PositionY}[5]{
-    \Entry\textbf{\OptionalUrl{#2}{#1}}\hfill\DatestampY{#3}-- \DatestampY{#4}
-    \begin{Description}
-        #5
-    \end{Description}
-    \Gap
+    \Entry\textbf{\OptionalUrl{#2}{#1}}\hfill\DatestampY{#3}--\DatestampY{#4}%
+    \begin{Description}%
+        #5%
+    \end{Description}%
+    \Gap%
 }
 
 
 % Format Specification for position with year-month range
 \newcommand{\PositionYM}[8]{
-    \Entry\textbf{\OptionalUrl{#2}{#1}}\hfill\DatestampYM{#3}{#4} -- \DatestampYM{#5}{#6}
-    \begin{Detail}\textit{#7}\end{Detail}
-    \begin{Description}
-        #8
-    \end{Description}
-    \Gap
+    \Entry\textbf{\OptionalUrl{#2}{#1}}\hfill\DatestampYM{#3}{#4}--\DatestampYM{#5}{#6}%
+    \begin{Detail}\textit{#7}\end{Detail}%
+    \begin{Description}%
+        #8%
+    \end{Description}%
+    \Gap%
 }
 
 
 % Command for a row of the skills table
 \newcommand{\skillCategory}[2]{
-    \textit{#1}&
-    \begin{Detail}
-        #2
-    \end{Detail}
+    \textit{#1}&%
+    \begin{Detail}%
+        #2%
+    \end{Detail}%
 }
 
 % Macro: SmallGap(small vertical gap between items in the same section)
@@ -335,7 +336,7 @@
 {\par\vspace{0\baselineskip}%
     \savebox{\BulletItemIndentBox}{\hspace{1.5mm}\BulletSymbol\hspace{1.5mm}}%
     \usebox{\BulletItemIndentBox}%
-    \ignorespaces #1\\%
+    \ignorespaces{}#1\\%
 }
 
 % Macro: SubBulletItem.
@@ -346,14 +347,14 @@
 {\par\vspace{0\baselineskip}%
     \savebox{\SubBulletItemIndentBox}{\hspace{1.5mm}\SubBulletSymbol\hspace{1.5mm}}
     \usebox{\SubBulletItemIndentBox}%
-    \ignorespaces #1%
+    \ignorespaces{}#1%
 }
 
 % Macro: Entry.
 \newcommand{\Entry}
 {\par\vspace{0\baselineskip}%
-    \parshape 1%
-    \labelwidth \linewidth%
+    \parshape=1%
+    \labelwidth\linewidth%
     \ignorespaces%
 }
 
