@@ -358,6 +358,11 @@
     \ignorespaces%
 }
 
+% Format specification for name of positions without date
+% Args: Name, URL, Description. Leave URL blank to not add hyperlink
+\newcommand{\EntryY}[3]
+{\Entry{\OptionalUrl{#2}{#1}}\hfill\DatestampY{#3}}
+
 % Macro: Item (aligns horizontally with BulletItem).
 \newcommand{\Item}
 {\par\vspace{0\baselineskip}%
