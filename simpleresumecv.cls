@@ -62,7 +62,7 @@
     left=0.70in,
     right=0.70in,
     top=0.3in,
-    bottom=0.1in,
+    bottom=0.3in,
     nohead,
     includefoot]{geometry}
 
