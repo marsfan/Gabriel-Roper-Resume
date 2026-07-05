@@ -1,5 +1,5 @@
 
-.PHONY: build docker
+.PHONY: build docker clean
 
 build:
 # Bind mount will mount the specified folder on the host machine on the container
@@ -8,3 +8,9 @@ build:
 
 docker:
 	docker build -t mytex .
+
+clean:
+	-rm Gabriel_Roper_Resume.aux
+	-rm Gabriel_Roper_Resume.log
+	-rm Gabriel_Roper_Resume.out
+	-rm Gabriel_Roper_Resume.pdf
