@@ -23,9 +23,6 @@
 \DeclareOption{nonstopmode}{\nonstopmode}
 
 
-
-
-
 % Datestamp format (default): {yyyy}{MM}{dd} ---> MMM yyyy (e.g., Jan 2008).
 \newcommand{\DatestampYMD}[3]{\mbox{\ShortMonth{#2} #1}}
 \newcommand{\DatestampYM}[2]{\mbox{\ShortMonth{#2} #1}}
@@ -138,31 +135,17 @@
 
 % Font styles.
 \newcommand{\UseHeadingFont}{\normalfont}
-\newcommand{\UseHeaderFooterFont}{\UseHeadingFont\fontsize{8.2pt}{9.5pt}\selectfont}
-\newcommand{\UseNoteFont}{\UseHeadingFont\fontsize{8pt}{9.6pt}\selectfont}
 \newcommand{\UseTitleFont}{\UseHeadingFont\fontsize{24pt}{33.6pt}\selectfont\bfseries}
 \newcommand{\UseSubTitleFont}{\normalfont\fontsize{10pt}{10.3pt}\selectfont}
 \newcommand{\UseSectionFont}{\UseHeadingFont\fontsize{9pt}{11pt}\selectfont\bfseries}
-\newcommand{\UseSubSectionFont}{\UseHeadingFont\fontsize{8.6pt}{10.3pt}\selectfont\bfseries}
 \newcommand{\UseDetailFont}{\normalfont\fontsize{8.8pt}{10.3pt}\selectfont}
 
 % Symbols (Unicode).
 % See: https://unicode-table.com/en/
 \newcommand{\BulletSymbol}{{\normalfont\fontsize{6}{7.2}\selectfont\raisebox{0.17em}{\char"25CF}}}
 \newcommand{\SubBulletSymbol}{{\normalfont\fontsize{6}{7.2}\selectfont\raisebox{0.17em}{\char"25CF}}}
-\newcommand{\TildeSymbol}{{\normalfont\char"007E}}
 
-
-\newcommand{\HeaderText}{}
-\newcommand{\FooterText}{\hfill\hfill}
-
-\def\ps@plain{%
-    \def\@oddhead{\HeaderText}%
-    \def\@evenhead{\HeaderText}%
-    \def\@oddfoot{\FooterText}%
-    \def\@evenfoot{\FooterText}}
-
-\pagestyle{plain}
+\pagestyle{empty}
 
 % Paragraph style.
 \setlength{\parindent}{0in} % No indentation at the beginning of each paragraph.
@@ -175,7 +158,6 @@
 
 % Avoid overfull lines.
 \sloppy
-
 
 % Macro: Title (name).
 \newcommand{\Title}[1]{%
@@ -315,12 +297,6 @@
 \newcommand{\Section}[1]
 {\par\pdfbookmark[2]{#1}{PDF: #1}%
     \item[\smash{\parbox[t]{1.2in}{\UseSectionFont\raggedright\MakeUppercase{#1}}}]%
-    \par}
-
-% Macro: SubSection.
-\newcommand{\SubSection}[3]
-{\par\pdfbookmark[3]{#2}{#3}%
-    {\UseSubSectionFont\raggedright\MakeUppercase{#1}}%
     \par}
 
 % Macro: Detail (text in smaller font under an item).
