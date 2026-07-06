@@ -240,8 +240,14 @@
 
 % Create Href, but only if the URL field is not blank
 % Args: URL, text to display
-\newcommand{\OptionalUrl}[2]{
-    \ifthenelse{\equal{#1}{}}{#2}{\href{#1}{#2}}
+\newcommand{\OptionalUrl}[2]{%
+    \ifthenelse{\equal{#1}{}}{#2}{\href{#1}{#2}}%
+}
+
+% Add the detail section, but only if a value is provided
+% Args: Text for detail. If not provided, section is not shown
+\newcommand{\OptionalDetail}[1]{%
+    \ifthenelse{\equal{#1}{}}{}{\begin{Detail}\textit{#1}\end{Detail}}%
 }
 
 % Format specification for name of positions without date
@@ -257,10 +263,11 @@
 % Format Specification for name of position and year range
 % Args: Name, URL, Start Year, End Year, description.
 % Leave URL blank to not add hyperlink
-\newcommand{\PositionY}[5]{
+\newcommand{\PositionY}[6]{
     \Entry\textbf{\OptionalUrl{#2}{#1}}\hfill\DatestampY{#3}--\DatestampY{#4}%
+    \OptionalDetail{#5}
     \begin{Description}%
-        #5%
+        #6%
     \end{Description}%
     \Gap%
 }
@@ -269,7 +276,7 @@
 % Format Specification for position with year-month range
 \newcommand{\PositionYM}[8]{
     \Entry\textbf{\OptionalUrl{#2}{#1}}\hfill\DatestampYM{#3}{#4}--\DatestampYM{#5}{#6}%
-    \begin{Detail}\textit{#7}\end{Detail}%
+    \OptionalDetail{#7}
     \begin{Description}%
         #8%
     \end{Description}%
