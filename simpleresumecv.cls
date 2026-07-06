@@ -143,7 +143,6 @@
 % Symbols (Unicode).
 % See: https://unicode-table.com/en/
 \newcommand{\BulletSymbol}{{\normalfont\fontsize{6}{7.2}\selectfont\raisebox{0.17em}{\char"25CF}}}
-\newcommand{\SubBulletSymbol}{{\normalfont\fontsize{6}{7.2}\selectfont\raisebox{0.17em}{\char"25CF}}}
 
 \pagestyle{empty}
 
@@ -322,17 +321,6 @@
     \ignorespaces{}#1\\%
 }
 
-% Macro: SubBulletItem.
-\newsavebox{\SubBulletItemIndentBox}
-\newlength{\SubBulletItemIndentWidth}
-%
-\newcommand{\SubBulletItem}[1]
-{\par\vspace{0\baselineskip}%
-    \savebox{\SubBulletItemIndentBox}{\hspace{1.5mm}\SubBulletSymbol\hspace{1.5mm}}
-    \usebox{\SubBulletItemIndentBox}%
-    \ignorespaces{}#1%
-}
-
 % Macro: Entry.
 \newcommand{\Entry}
 {\par\vspace{0\baselineskip}%
@@ -351,14 +339,6 @@
 {\par\vspace{0\baselineskip}%
     \savebox{\BulletItemIndentBox}{\hphantom{\hspace{1.5mm}\BulletSymbol\hspace{1.5mm}}}%
     \usebox{\BulletItemIndentBox}%
-    \ignorespaces%
-}
-
-% Macro: SubItem (aligns horizontally with SubBulletItem).
-\newcommand{\SubItem}
-{\par\vspace{0\baselineskip}%
-    \savebox{\SubBulletItemIndentBox}{\hphantom{\hspace{5.6mm}\SubBulletSymbol\hspace{1.5mm}}}%
-    \usebox{\SubBulletItemIndentBox}%
     \ignorespaces%
 }
 
