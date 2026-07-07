@@ -65,6 +65,7 @@
 
 % PDF settings and properties.
 \RequirePackage{hyperref}
+\RequirePackage{bookmark}
 
 % Hyphenation: Disabled.
 \RequirePackage[none]{hyphenat}
