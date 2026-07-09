@@ -10,7 +10,8 @@
 %% public domain; see <http://unlicense.org> for details.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage{ifthen}
+% \usepackage{ifthen}
+\RequirePackage{etoolbox}
 
 \NeedsTeXFormat{LaTeX2e}
 
@@ -53,6 +54,42 @@
 % Use article class as the base class.
 \LoadClass[10pt,oneside]{article}
 
+% XeLaTeX packages.
+\RequirePackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX}
+
+
+% Font: Use "Tinos" as the main typeface (\textnormal{}, \normalfont).
+% The "Tinos" fonts are released under the Apache License Version 2.0,
+% and can be downloaded for free at <http://www.fontsquirrel.com/fonts/tinos>.
+% Symbol table: <http://www.fileformat.info/info/unicode/font/tinos/grid.htm>
+\setmainfont[Path=./Fonts/Tinos/,
+    ItalicFont=Tinos-Italic,
+    BoldFont=Tinos-Bold,
+    BoldItalicFont=Tinos-BoldItalic]
+{Tinos-Regular.ttf}
+
+
+% Sans-serif font: Changed to "Tinos".
+\renewcommand{\sffamily}{\rmfamily}
+
+% Typewriter (monospace) font: Changed to "Tinos".
+\renewcommand{\ttfamily}{\rmfamily}
+
+% Small caps font: Changed to "Tinos".
+\renewcommand{\scshape}{\rmfamily}
+
+% Font styles.
+\newcommand{\UseHeadingFont}{\normalfont}
+\newcommand{\UseTitleFont}{\UseHeadingFont\fontsize{24pt}{33.6pt}\selectfont\bfseries}
+\newcommand{\UseSubTitleFont}{\normalfont\fontsize{10pt}{10.3pt}\selectfont}
+\newcommand{\UseSectionFont}{\UseHeadingFont\fontsize{9pt}{11pt}\selectfont\bfseries}
+\newcommand{\UseDetailFont}{\normalfont\fontsize{8.8pt}{10.3pt}\selectfont}
+
+% Symbols (Unicode).
+% See: https://unicode-table.com/en/
+\newcommand{\BulletSymbol}{{\normalfont\fontsize{6}{7.2}\selectfont\raisebox{0.17em}{\char"25CF}}}
+
 % Geometry package for page margins.
 % TODO: Figure out what is wrong with the margin here
 \RequirePackage[
@@ -65,7 +102,7 @@
 
 % PDF settings and properties.
 \RequirePackage{hyperref}
-\RequirePackage{bookmark}
+\RequirePackage{calc}
 
 % Hyphenation: Disabled.
 \RequirePackage[none]{hyphenat}
@@ -77,9 +114,6 @@
 
 \titleformat{\section}[leftmargin]{\UseSectionFont\raggedright}{}{0pt}{\MakeUppercase}
 \titlespacing{\section}{\SectionMargin}{0.7\baselineskip}{0\baselineskip}
-
-% Timestamp.
-\newcommand{\Timestamp}{{\DTMnow}}
 
 % Abbreviations for months.
 \newcommand{\LongMonth}[1]{%
@@ -113,43 +147,7 @@
     \or{}Dec%
     \fi}
 
-% XeLaTeX packages.
-\RequirePackage{fontspec}
-\defaultfontfeatures{Ligatures=TeX}
-\RequirePackage{xunicode}
 
-
-% Font: Use "Tinos" as the main typeface (\textnormal{}, \normalfont).
-% The "Tinos" fonts are released under the Apache License Version 2.0,
-% and can be downloaded for free at <http://www.fontsquirrel.com/fonts/tinos>.
-% Symbol table: <http://www.fileformat.info/info/unicode/font/tinos/grid.htm>
-\setmainfont[Path=./Fonts/Tinos/,
-    ItalicFont=Tinos-Italic,
-    BoldFont=Tinos-Bold,
-    BoldItalicFont=Tinos-BoldItalic]
-{Tinos-Regular.ttf}
-
-
-% Sans-serif font: Changed to "Tinos".
-\renewcommand{\sffamily}{\rmfamily}
-
-% Typewriter (monospace) font: Changed to "Tinos".
-\renewcommand{\ttfamily}{\rmfamily}
-
-% Small caps font: Changed to "Tinos".
-\renewcommand{\scshape}{\rmfamily}
-%\renewcommand{\textsc}[1]{\textbf{\MakeUppercase{#1}}}
-
-% Font styles.
-\newcommand{\UseHeadingFont}{\normalfont}
-\newcommand{\UseTitleFont}{\UseHeadingFont\fontsize{24pt}{33.6pt}\selectfont\bfseries}
-\newcommand{\UseSubTitleFont}{\normalfont\fontsize{10pt}{10.3pt}\selectfont}
-\newcommand{\UseSectionFont}{\UseHeadingFont\fontsize{9pt}{11pt}\selectfont\bfseries}
-\newcommand{\UseDetailFont}{\normalfont\fontsize{8.8pt}{10.3pt}\selectfont}
-
-% Symbols (Unicode).
-% See: https://unicode-table.com/en/
-\newcommand{\BulletSymbol}{{\normalfont\fontsize{6}{7.2}\selectfont\raisebox{0.17em}{\char"25CF}}}
 
 \pagestyle{empty}
 
@@ -167,7 +165,7 @@
 
 % Macro: Title (name).
 \newcommand{\Title}[1]{%
-    \par\pdfbookmark[1]{#1}{#1}%
+    \par%
     \begingroup\centering%
     \UseTitleFont{#1}%
     \par\endgroup\par}
@@ -234,13 +232,13 @@
 % Create Href, but only if the URL field is not blank
 % Args: URL, text to display
 \newcommand{\OptionalUrl}[2]{%
-    \ifthenelse{\equal{#1}{}}{#2}{\href{#1}{#2}}%
+    \ifstrempty{#1}{#2}{\href{#1}{#2}}%
 }
 
 % Add the detail section, but only if a value is provided
 % Args: Text for detail. If not provided, section is not shown
 \newcommand{\OptionalDetail}[1]{%
-    \ifthenelse{\equal{#1}{}}{}{\begin{Detail}\textit{#1}\end{Detail}}%
+    \ifstrempty{#1}{}{\begin{Detail}\textit{#1}\end{Detail}}%
 }
 
 % Format specification for name of positions without date
@@ -293,34 +291,23 @@
 % Macro: BigGap (big vertical gap between items in the same section).
 \newcommand{\BigGap}{\par\vspace{2mm}\par}
 
-% Macro: Section (new section for Education, Research Experience, etc.).
-\newcommand{\Section}[1]
-{\par\pdfbookmark[2]{#1}{PDF: #1}%
-    \item[\smash{\parbox[t]{1.2in}{\UseSectionFont\raggedright\MakeUppercase{#1}}}]%
-    \par}
-
 % Macro: Detail (text in smaller font under an item).
 \newenvironment{Detail}
 {\par\begingroup\UseDetailFont}
 {\par\endgroup\par}
 
 % Macro: BulletItem.
-\newsavebox{\BulletItemIndentBox}
-\newlength{\BulletItemIndentWidth}
-%
 \newcommand{\BulletItem}[1]
-{\par\vspace{0\baselineskip}%
-    \savebox{\BulletItemIndentBox}{\hspace{1.5mm}\BulletSymbol\hspace{1.5mm}}%
-    \usebox{\BulletItemIndentBox}%
-    \ignorespaces{}#1\\%
+{%
+    \par
+    \hspace{1.5mm}\BulletSymbol\hspace{1.5mm}
+    #1\\
 }
 
 % Macro: Entry.
-\newcommand{\Entry}
-{\par\vspace{0\baselineskip}%
-    \labelwidth\linewidth%
-    \ignorespaces%
-}
+% Its really just re-naming \par. But since we have a \EntryY elsewhere,
+% it helps to have a common name
+\newcommand{\Entry}{\par}
 
 % Format specification for name of positions without date
 % Args: Name, URL, Description. Leave URL blank to not add hyperlink
@@ -328,12 +315,7 @@
 {\Entry{\OptionalUrl{#2}{#1}}\hfill\DatestampY{#3}}
 
 % Macro: Item (aligns horizontally with BulletItem).
-\newcommand{\Item}
-{\par\vspace{0\baselineskip}%
-    \savebox{\BulletItemIndentBox}{\hphantom{\hspace{1.5mm}\BulletSymbol\hspace{1.5mm}}}%
-    \usebox{\BulletItemIndentBox}%
-    \ignorespaces%
-}
+\newcommand{\Item}{\hspace{1.5mm}\hspace{\widthof{\BulletSymbol}}\hspace{1.5mm}}
 
 % Macro: Hide.
 \newcommand{\Hide}[1]{}
