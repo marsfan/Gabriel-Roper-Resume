@@ -70,7 +70,13 @@
 % Hyphenation: Disabled.
 \RequirePackage[none]{hyphenat}
 
-% Current date and time.
+% Configure section headings
+\RequirePackage{titlesec}
+\newlength{\SectionMargin}
+\setlength{\SectionMargin}{1.2in}
+
+\titleformat{\section}[leftmargin]{\UseSectionFont\raggedright}{}{0pt}{\MakeUppercase}
+\titlespacing{\section}{\SectionMargin}{0.7\baselineskip}{0\baselineskip}
 
 % Timestamp.
 \newcommand{\Timestamp}{{\DTMnow}}
@@ -202,25 +208,12 @@
 % Macro: Body (rest of the document).
 \newenvironment{Body}
 {%
-    \par\vspace{1.5\baselineskip}%
-    \begin{list}
-    {}
-    {\setlength\leftmargin{1.2in}%
-        \setlength\rightmargin{0in}%
-        \setlength\labelwidth{1.2in}%
-        \setlength\labelsep{0in}%
-        \setlength\listparindent{0in}%
-        \setlength\itemindent{0in}%
-        \setlength\parskip{0in}%
-        \setlength\topsep{0in}%
-        \setlength\parsep{0in}%
-        \setlength\itemsep{.7\baselineskip}%
-        \setlength\partopsep{0in}%
-        \raggedright%
-    }%
+    \par\vspace{0.8\baselineskip}%
+    \setlength{\leftskip}{\SectionMargin}%
+    \setlength{\parindent}{0pt}%
+    \setlength{\parskip}{0pt}%
 }
 {%
-    \end{list}%
     \par%
 }
 
@@ -325,7 +318,6 @@
 % Macro: Entry.
 \newcommand{\Entry}
 {\par\vspace{0\baselineskip}%
-    \parshape=1%
     \labelwidth\linewidth%
     \ignorespaces%
 }
