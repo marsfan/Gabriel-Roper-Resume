@@ -1,3 +1,3 @@
 FROM texlive/texlive:latest-medium
-RUN tlmgr update --self && tlmgr install hyphenat footmisc subfiles
+RUN tlmgr update --self && tlmgr install hyphenat footmisc subfiles titlesec
 WORKDIR /workdir
