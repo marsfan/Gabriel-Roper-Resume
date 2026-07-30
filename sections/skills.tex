@@ -1,30 +1,31 @@
 \documentclass[../Gabriel_Roper_Resume]{subfiles}
 \graphicspath{{\subfix{../images/}}}
+
 \begin{document}
-\Gap%
+
 \section{Skills}
-\begin{skillTable}
-    \skillCategory{Engineering Software}{
-        ANSYS Mechanical Workbench,
-        ANSYS SCADE,
+\begin{minipage}[t]{0.6\linewidth}
+
+    \skillGroup{Engineering Software}{
+        ANSYS,
         CATIA,
         Eagle,
         Git,
-        IAR Embedded Workbench,
         KiCAD,
         LabVIEW,
-        MakerBot Desktop,
-        MPLAB X,
-        PyCharm,
         SOLIDWORKS
-    }\\
+        % \item MPLAB X
+    }
 
-    \skillCategory{Office Software}{
-        LibreOffice,
-        Microsoft Office
-    }\\
+    \skillGroup{Office Software}{
+        LibreOffice Suite,
+        Microsoft Excel,
+        Microsoft PowerPoint,
+        Microsoft Visio,
+        Microsoft Word
+    }
 
-    \skillCategory{Other Software}{
+    \skillGroup{Other Software}{
         Blender Animation,
         Docker,
         ESA SNAP,
@@ -32,10 +33,10 @@
         Google Earth Engine,
         Linux,
         Microsoft Windows,
-        Unity Game Engine (Basic)
-    }\\
+        Unity Game Engine
+    }
 
-    \skillCategory{Languages}{
+    \skillGroup{Languages}{%
         \LaTeX,
         Arduino,
         Basic Verilog,
@@ -46,9 +47,9 @@
         Python,
         Rust,
         Simulink
-    }\\
+    }
 
-    \skillCategory{Technical}{
+    \skillGroup{Technical}{%
         3D Printing,
         Cypress PSOC,
         PCB Design,
@@ -57,7 +58,18 @@
         TI Launchpad,
         UML,
         Woodworking
-    }\\
+    }
 
-\end{skillTable} % For some reason, the tabular environment is adding an extra space at the end. This removes it
+    \skillGroup{Technical}{
+        3D Printing,
+        Cypress PSOC,
+        PCB Design,
+        Signal Analysis,
+        Soldering,
+        TI Launchpad,
+        UML,
+        Woodworking
+    }
+
+\end{minipage}
 \end{document}

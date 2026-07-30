@@ -10,8 +10,12 @@
 %% public domain; see <http://unlicense.org> for details.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% \usepackage{ifthen}
+
+\RequirePackage{tasks}
 \RequirePackage{etoolbox}
+\RequirePackage{enumitem}
+\RequirePackage{multicol}
+\RequirePackage{listofitems}
 
 \NeedsTeXFormat{LaTeX2e}
 
@@ -82,9 +86,9 @@
 % Font styles.
 \newcommand{\UseHeadingFont}{\normalfont}
 \newcommand{\UseTitleFont}{\UseHeadingFont\fontsize{24pt}{33.6pt}\selectfont\bfseries}
-\newcommand{\UseSubTitleFont}{\normalfont\fontsize{10pt}{10.3pt}\selectfont}
-\newcommand{\UseSectionFont}{\UseHeadingFont\fontsize{9pt}{11pt}\selectfont\bfseries}
-\newcommand{\UseDetailFont}{\normalfont\fontsize{8.8pt}{10.3pt}\selectfont}
+\newcommand{\UseSubTitleFont}{\normalfont\fontsize{11pt}{10.3pt}\selectfont}
+\newcommand{\UseSectionFont}{\UseHeadingFont\fontsize{10pt}{11pt}\selectfont\bfseries}
+\newcommand{\UseDetailFont}{\normalfont\fontsize{9pt}{10.3pt}\selectfont}
 
 % Symbols (Unicode).
 % See: https://unicode-table.com/en/
@@ -110,7 +114,7 @@
 % Configure section headings
 \RequirePackage{titlesec}
 \newlength{\SectionMargin}
-\setlength{\SectionMargin}{1.2in}
+\setlength{\SectionMargin}{1.3in}
 
 \titleformat{\section}[leftmargin]{\UseSectionFont\raggedright}{}{0pt}{\MakeUppercase}
 \titlespacing{\section}{\SectionMargin}{0.7\baselineskip}{0\baselineskip}
@@ -191,20 +195,48 @@
     \end{Detail}%
 }
 
-% Environment for the table of skills
-\newenvironment{skillTable}
-{
-    \def\arraystretch{1}%  1 is the default, change whatever you need
-    \hspace*{-0.8em}
-    \begin{tabular}[t]{p{11em} p{\tableWidth}}
+% Environment for a single 3 column list of skills
+% Takes arguments for the number of columns (default 3)
+% and the name of the group.
+\newenvironment{skillGroupEnvironment}[2][3]{%
+    \textbf{#2}\par\vspace{-1\baselineskip}%
+    \begingroup%
+    \UseDetailFont%
+    \begin{multicols}{#1}
+    \begin{itemize}[
+        label={},
+        leftmargin=1em,
+        itemindent=0pt,
+        itemsep=0pt,
+        parsep=0pt,
+        topsep=0pt
+    ]
+}{%
+    \end{itemize}%
+    \end{multicols}%
+    \endgroup%
+    \vspace{-0.5\baselineskip}%
 }
-{
-    \vspace{-1em}
-    \end{tabular}
+
+% Command for a three column set of skills with a header
+% first arg is column count (optional, defaults to 3)
+% second is header for the skill section
+% third is the comma separated list of skills
+\newcommand{\skillGroup}[3][3]{%
+    \readlist\skillitems{#3}
+    \begin{skillGroupEnvironment}[#1]{#2}
+
+        % Reads argument 3 and turns it into a list named \skillitems
+        % Iterate over the skillitems list.
+        % For each member of the list, name it
+        \foreachitem\skill\in\skillitems{%
+            \item\skill%
+        }%
+    \end{skillGroupEnvironment}
 }
 
 % Macro: Body (rest of the document).
-\newenvironment{Body}
+\newenvironment{Body}%
 {%
     \par\vspace{0.8\baselineskip}%
     \setlength{\leftskip}{\SectionMargin}%
@@ -214,6 +246,7 @@
 {%
     \par%
 }
+
 
 
 % Format Specification for education info
