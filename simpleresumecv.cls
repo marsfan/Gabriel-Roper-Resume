@@ -86,7 +86,7 @@
 % Font styles.
 \newcommand{\UseHeadingFont}{\normalfont}
 \newcommand{\UseTitleFont}{\UseHeadingFont\fontsize{24pt}{33.6pt}\selectfont\bfseries}
-\newcommand{\UseSubTitleFont}{\normalfont\fontsize{11pt}{10.3pt}\selectfont}
+\newcommand{\UseSubTitleFont}{\normalfont\fontsize{12pt}{14.3pt}\selectfont}
 \newcommand{\UseSectionFont}{\UseHeadingFont\fontsize{10pt}{11pt}\selectfont\bfseries}
 \newcommand{\UseDetailFont}{\normalfont\fontsize{9pt}{10.3pt}\selectfont}
 
