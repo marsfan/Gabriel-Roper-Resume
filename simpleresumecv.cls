@@ -169,17 +169,16 @@
 
 % Macro: Title (name).
 \newcommand{\Title}[1]{%
-    \par%
     \begingroup\centering%
     \UseTitleFont{#1}%
-    \par\endgroup\par}
+    \par\endgroup}
 
 % Macro: SubTitle (personal information below name).
 \newenvironment{SubTitle}
-{\par\vspace{0.25\baselineskip}%
+{\vspace{0.25\baselineskip}%
     \begingroup\centering%
     \UseSubTitleFont}
-{\par\endgroup\par}
+{\par\endgroup}
 
 % Environment for detailed description of the position
 \newenvironment{Description}
